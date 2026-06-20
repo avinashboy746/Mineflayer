@@ -1,10 +1,11 @@
 const mineflayer = require('mineflayer');
 
 const names = [
-  "Rohan", "Rohit", "Golu", "Mohit", "Aryan",
-  "Vicky", "Sonu", "Monu", "Aman", "Karan",
-  "Rahul", "Shivam", "Piyush", "Lucky", "Deepak",
-  "Ajay", "Nitin", "Sahil", "Abhishek", "Prince"
+  "Rohit",
+  "Golu",
+  "Mohit",
+  "Aryan",
+  "Lucky"
 ];
 
 for (let i = 0; i < names.length; i++) {
@@ -16,15 +17,15 @@ for (let i = 0; i < names.length; i++) {
     });
 
     bot.on('spawn', () => {
-      console.log(`${names[i]} joined!`);
-    });
-
-    bot.on('end', () => {
-      console.log(`${names[i]} left.`);
+      console.log(`${names[i]} server mein join ho gaya!`);
     });
 
     bot.on('error', (err) => {
-      console.log(err);
+      console.log(`${names[i]} error:`, err.message);
     });
-  }, i * 5000); // Har 5 second mein ek bot join hoga
+
+    bot.on('end', () => {
+      console.log(`${names[i]} disconnect ho gaya.`);
+    });
+  }, i * 3000); // Har 3 second mein ek bot join hoga
 }
